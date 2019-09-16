@@ -6,9 +6,7 @@ print("Multiplied List is")
 print(multiplied)
 sum = 0
 sum1 = 0
-for x in list:
-	sum = lambda x, sum : sum + x
-for y in multiplied:
-	sum2 = lambda x, sum2 : sum2 + x
+sum = reduce(lambda x, y : x+y , list)
+sum1 = reduce(lambda x, y : x+y , multiplied)
 print(sum)
 print(sum1)
