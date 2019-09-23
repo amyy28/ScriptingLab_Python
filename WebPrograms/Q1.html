@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Number Accept</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body class="container">
+	<p><strong>Program to check the divisibility by 3 or 7</strong></p>
+	<p id="zeel"></p>
+	<input type="Number" id="yo">
+	<input type="button" class="btn btn-primary" value="Click Me" onclick="check()">
+	<script>
+		function check()
+		{
+			var a = document.querySelector("#yo").value;
+			a = Number(a);
+			if(a%3==0 || a%7==0){
+				alert("Divisible by 3 or 7");
+			var a = document.querySelector("#zeel").innerHTML = "Yes divisible";}
+				else
+					alert("Not divisible by 3 or 7");
+			}
+	</script>
+	<script type="text/javascript" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
