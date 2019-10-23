@@ -1,60 +1,37 @@
-
-
-import sys
-import os
+import sys  #system import
+import os   #os import
 from functools import reduce
 
+dict={}  #empty dictionary create
 
-dict = {}
-wordLen = []
-
-if(len(sys.argv) != 2):
-	print ("Invalid Arguments")
+if(len(sys.argv)!=2):               #length of arguments must strictly be 2
+	print("Invalid arguments")
 	sys.exit()
 
-if(not(os.path.exists(sys.argv[0]))):
-	print ("Invalid File Path")
+if(not(os.path.exists(sys.argv[1]))):    #check if file path is valid
+	print("File not present in path")
 	sys.exit()
 
-if(sys.argv[1].split('.')[-1] != "txt"):
-	print ("Invalid File Format. Only TXT files allowed")
+if(sys.argv[1].split(".")[-1]!="txt"):  # Ensure it's a text file only
+	print("Only txt files accepted")
 	sys.exit()
 
-with open(sys.argv[1]) as file:
+with open(sys.argv[1]) as file:   #open file and store words in dictionary
 	for line in file:
-		for word in line.split():
-			dict[word] = dict.get(word,0) + 1
-	# print dict
+		for word in line.split():  
+			dict[word]=dict.get(word,0)+1  #count number of occurences of each word
+	print(dict)
 
-# Display the top 10 words with most number of occurrences in descending order.
+sl=[]  #list of lists
+sl=sorted(dict.items(), key=lambda x:x[1], reverse=True)  #sort based on key, where key=occurrences
+print(sl[:10])  #printing top 10 results
 
-# Food for thought - Does a dictionary maintain order? How to print 10 words with most frequency?
-# Ans - extract dict items as Tuples and sort them based on value in dictionary
-#(second item of the tuple / index 1)
+word=[]
+for i,j in sl[:10]:       #i=key,j=value in each iteration of list of lists
+	word.append(len(i))
+print(word)
 
-sortedDict = sorted(dict.items(), key=lambda dictItem: dictItem[1], reverse=True)
+sum=reduce((lambda x,y:x+y),word)
+print("Avs is", sum/len(word))
 
-for i in range(10):
-	try:
-		wordTuple = sortedDict[i]
-		wordLen.append(len(wordTuple[0]))
-		print (wordTuple[0], ", Frequency: " , wordTuple[1] , ", Length " , len(wordTuple[0]))
-	except IndexError:
-		print ("File has less than 10 words")
-		break
-
-print ("Lengths of 10 most frequently occuring words:")
-print (wordLen)
-
-
-# Write a one-line reduce function to get the average length
-
-sum = reduce(lambda x,y: x+y, wordLen)
-print ("Average length of words: " , sum*1.0/len(wordLen)*1.0)
-
-
-# Write a one-line list comprehension to display squares of all odd numbers
-
-squares = [x**2 for x in wordLen if x%2 != 0]
-print ("Squres of odd word lengths: ")
-print (squares)
+print([x*x for x in word if x%2!=0])
