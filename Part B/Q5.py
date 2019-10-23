@@ -1,8 +1,8 @@
-import sys  #system import
-import os   #os import
+import sys  #import system-specific parameters and functions
+import os   #import functions to interact with the operating system
 from functools import reduce
 
-dict={}  #empty dictionary create
+dict={}  #create empty dictionary
 
 if(len(sys.argv)!=2):               #length of arguments must strictly be 2
 	print("Invalid arguments")
