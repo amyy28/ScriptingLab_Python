@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Grade Student</title>
+</head>
+<body>
+
+Name :       <input type="text" >
+
+<br>
+<form id = "form1">
+
+English :    <input type = "number" placeholder = "Enter Marks" id = "eng" >
+<br>
+<p id="grad0" ></p>
+<br>
+Hindi :      <input type = "number" placeholder = "Enter Marks" id = "hin">
+<br>
+<p id="grad1" ></p>
+<br>
+Math :       <input type = "number" placeholder = "Enter Marks" id = "math">
+<br>
+<p id="grad2" ></p>
+<br>
+Biology :    <input type = "number" placeholder = "Enter Marks" id = "bio">
+<br>
+<p id="grad3" ></p><br>
+Physics :    <input type = "number" placeholder = "Enter Marks" id = "phy">
+<br>
+<p id="grad4" ></p><br>
+Chemistry :  <input type = "number" placeholder = "Enter Marks" id = "chem">
+<br>
+<p id="grad5" ></p></form>
+<input type= "button" name = "btn" value = "Calculate" onclick = "calc()">
+<br>
+Sum : <p id ="result"></p>
+Final Grade : <p id = "grade"></p>
+
+
+<!-- <label>Name :</label>
+<input type="text" id="name">
+
+<form id = "form1">
+	<label>English :</label>    
+	<input type = "number" placeholder = "Enter Marks" id = "eng" >
+	<p id="grad0" ></p>
+	<label>Hindi :</label>
+	<input type = "number" placeholder = "Enter Marks" id = "hin">
+	<p id="grad1" ></p>
+	<label>Maths :</label>       
+	<input type = "number" placeholder = "Enter Marks" id = "math">
+	<p id="grad2" ></p>
+	<label>Biology :</label>    
+	<input type = "number" placeholder = "Enter Marks" id = "bio">
+	<p id="grad3" ></p><br>
+	<label>Physics :</label>
+	<input type = "number" placeholder = "Enter Marks" id = "phy">
+	<p id="grad4" ></p><br>
+	<input type= "submit" name = "btn" value = "Calculate" onclick = "calc()">
+</form>
+
+Sum : <p id ="result"></p>
+Final Grade : <p id = "grade"></p> -->
+
+<script>
+	function calc() {
+		var for1 = document.getElementById("form1")
+		var sum = 0
+
+	function grade_cal(num) {
+		var grade = ""
+		if(num>90)
+		grade="Grade S+"
+		else if(num>80)
+		grade="Grade S"
+		else if(num>70)
+		grade = "Grade A"
+		else if(num>60)
+		grade = "Grade B"
+		else if(num>50)
+		grade = "Grade C"
+		else if(num>40)
+		grade = "Grade D"
+		else
+		grade ="Grade F"
+		return grade
+		}
+
+
+	for(var i = 0 ; i < for1.length ; i++) {
+	document.getElementById("grad"+i).innerHTML = grade_cal(for1[i].value) 
+	sum= sum+parseInt(for1[i].value);
+	}
+
+	document.getElementById("result").innerHTML = sum
+	document.getElementById("grade").innerHTML = grade_cal(sum)
+}
+</script>
+
+</body>
+</html>
