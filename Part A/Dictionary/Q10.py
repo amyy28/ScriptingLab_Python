@@ -1,3 +1,0 @@
-atomic =	{
-  	"H": "Hydrogen" 
-	}
